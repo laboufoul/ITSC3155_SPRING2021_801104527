@@ -38,16 +38,18 @@ def is_power_of(i,j):
 # if s is an empty string return an empty string
 def longest_word(s):
   word = ''
-  wordLength = 0
+  current = 0
+  longestWord = ''
   if(s == ""):
       return ""
   else:
       for x in range (0, len(s)):
-          if (s[x] == ' '):
-           word = s[0:x]#got first word
-           wordLength = len(word)
-           for j in range (x+1, len(s)):
-               if(s[j] == ' '):
-                if (wordLength < len(s[x:j])):
-                    word = s[x+1:j]
-      return word
+          if (s[x] == ' ' or x == len(s)-1):
+              word = s[current:(x if x < len(s)-1 else x+1)]
+              current = x+1
+
+              if (len(word) >= len(longestWord)):
+                 longestWord = word
+
+
+      return longestWord
