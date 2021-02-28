@@ -21,17 +21,18 @@ def count_threes(n):
 
 # Part B. longest_consecutive_repeating_char
 # Define a function longest_consecutive_repeating_char(s) that takes
-# a string s and returns the character that has the longest consecutive repeat. ddabab
+# a string s and returns the character that has the longest consecutive repeat. ddabab aaaffftttt
 def longest_consecutive_repeating_char(s):
   most_common_letter = s[0]
   for i in range (0, len(s)):
-   for x in range (1, len(s)):
-    if not (s[i] == s[x]):
-     if (len(s[i:x]) > len(s[0:1])):
-       most_common_letter = s[i]
-     elif (s[i] == s[x]):
-       most_common_letter = s[i]
+   for x in range (0, len(s)):
+    if (s[i] != s[x]):
+          most_common_letter = s[i]
+          i = x
+
   return most_common_letter
+
+
 
 
 # Part C. is_palindrome
