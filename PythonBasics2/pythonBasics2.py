@@ -6,31 +6,55 @@
 
 
 # Part A. count_threes
-# Define a function count_threes(n) that takes an int and
-# returns the number of multiples of 3 in the range from 0
-# to n (including n).
+# Define a function count_threes(n) that takes a string of integers and
+# counts how often each int appears within the string. returns the integer that appears
+# the most amount of times
 
 def count_threes(n):
-  counter = 0
-  for i in range (0, n+1):
-   if (i%3 == 0):
-    if (i > 0):
-     counter += 1
-  return counter
+  numbers = {}
+  max_num_value = 0
+  most_common = 0
+  for i in n:
+      if i not in numbers:
+          numbers[i] = 1
+      else:
+        numbers[i] = numbers[i] + 1
+  max_num_value = max(numbers.values())
+  for x in numbers.keys():
+      if numbers[x] == max_num_value:
+          most_common = x
+  most_common = int (most_common)
+  return most_common
+
+
+
+
+
 
 
 # Part B. longest_consecutive_repeating_char
 # Define a function longest_consecutive_repeating_char(s) that takes
-# a string s and returns the character that has the longest consecutive repeat. ddabab aaaffftttt
+# a string s and stores each character and how often it appears in a dictionary
+# then returns the letters that have the longest consecutive repeats
 def longest_consecutive_repeating_char(s):
-  most_common_letter = s[0]
-  for i in range (0, len(s)):
-   for x in range (0, len(s)):
-    if (s[i] != s[x]):
-          most_common_letter = s[i]
-          i = x
+  letters = {}
+  count = 0
+  for x in range(len(s)-1):
+   if (s[x] == s[x+1]):
+      count += 1
+      letters[s[x]] = count
+   else:
+      letters[s[x]] = count
+      count = 0
 
-  return most_common_letter
+
+  newLetters = {}
+  max_count = max(letters.values())
+  for x in letters.keys():
+   if letters[x] == max_count:
+      newLetters[x] = letters[x]
+
+  return newLetters.keys()
 
 
 
