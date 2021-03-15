@@ -11,20 +11,20 @@
 # the most amount of times
 
 def count_threes(n):
-  numbers = {}
-  max_num_value = 0
-  most_common = 0
-  for i in n:
-      if i not in numbers:
-          numbers[i] = 1
-      else:
-        numbers[i] = numbers[i] + 1
-  max_num_value = max(numbers.values())
+  numbers = {} # declare empty dictionary
+  max_num_value = 0 #declare variable to 0
+  most_common = 0 #initialize most common multiple to be 0
+  for i in n: #adding each individual number in string to dictionary
+      if i not in numbers: #if key not in dictionary
+          numbers[i] = 1#key has value of 1
+      else:#if key in dictionary
+        numbers[i] = numbers[i] + 1#key's value increases by 1 each time it appears
+  max_num_value = max(numbers.values())#max number is the highest value in dictionary
   for x in numbers.keys():
-      if numbers[x] == max_num_value:
-          most_common = x
-  most_common = int (most_common)
-  return most_common
+      if numbers[x] == max_num_value:#finding most common number
+          most_common = x#most common is equal to the key that corresponds to value max_num_value
+  most_common = int (most_common)#type casting most common to an integer
+  return most_common#return most common
 
 
 
@@ -37,24 +37,23 @@ def count_threes(n):
 # a string s and stores each character and how often it appears in a dictionary
 # then returns the letters that have the longest consecutive repeats
 def longest_consecutive_repeating_char(s):
-  letters = {}
-  count = 0
-  for x in range(len(s)-1):
-   if (s[x] == s[x+1]):
-      count += 1
-      letters[s[x]] = count
-   else:
-      letters[s[x]] = count
-      count = 0
+  letters = {}#declare empty dictionary
+  count = 0#initialize count to 0
+  for x in range(len(s)-1):#for every char in string s
+   if (s[x] == s[x+1]):#if two consecutive chars are the same
+      count += 1#increase count
+      letters[s[x]] = count#letters at value of char equals to its count
+   else:#if two consecutive chars are not the same
+      letters[s[x]] = count#value of letters at char equals to count
+      count = 0#reset count to 0
 
+  dict = {}#declare an empty dictionary
+  max_count = max(letters.values())#max count is the highest value in letters
+  for x in letters.keys():#for every key in letters
+   if letters[x] == max_count:#if value in letters is equal to max_count
+      dict[x] = letters[x]#value of dictionary at x is equal to value of letters at x
 
-  newLetters = {}
-  max_count = max(letters.values())
-  for x in letters.keys():
-   if letters[x] == max_count:
-      newLetters[x] = letters[x]
-
-  return newLetters.keys()
+  return dict.keys()#return keys of dictionary
 
 
 
@@ -71,3 +70,4 @@ def is_palindrome(s):
        return True
       else:
        return False
+
