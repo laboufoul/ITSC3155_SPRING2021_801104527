@@ -39,7 +39,7 @@ def new_note():
         new_entry = Note(title, text, today)
         db.session.add(new_entry)
         db.session.commit()
-        return redirect(url_for('get_notes', user=a_user))
+        return redirect(url_for('get_notes'))
     else:
        #get user from db
        a_user = db.session.query(User).filter_by(email='mogli@uncc.edu')
